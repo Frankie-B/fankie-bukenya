@@ -1,0 +1,20 @@
+{
+  "name": "frankie-bukenya",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npm run development",
+    "development": "webpack serve --progress --config webpack.config.development.js",
+    "build": "webpack --progress --config webpack.config.build.js"
+  },
+  "author": "Frankie Bukenya",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^10.2.4",
+    "mini-css-extract-plugin": "^2.6.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0",
+    "webpack-merge": "^5.8.0"
+  }
+}

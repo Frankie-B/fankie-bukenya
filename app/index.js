@@ -1,0 +1,4 @@
+
+if (IS_DEVELOPMENT) {
+  console.log('DEVELOPMENT SERVER IS RUNNING');
+}
