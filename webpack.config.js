@@ -1,9 +1,9 @@
 
-const path  = require('path');
-const webpack = require( 'webpack');
+const path = require('path');
+const webpack = require('webpack');
 
 
-const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
@@ -53,18 +53,18 @@ module.exports = {
     }),
 
     new ImageMinimizerPlugin({
-       minimizer: {
-         implementation: ImageMinimizerPlugin.imageminMinify,
-         options: {
-           // Lossless optimization with custom option
-           // Feel free to experiment with options for better result for you
-           plugins: [
-             ["gifsicle", { interlaced: true }],
-             ["jpegtran", { progressive: true }],
-             ["optipng", { optimizationLevel: 5 }]
-            ],
-          },
+      minimizer: {
+        implementation: ImageMinimizerPlugin.imageminMinify,
+        options: {
+          // Lossless optimization with custom option
+          // Feel free to experiment with options for better result for you
+          plugins: [
+            ["gifsicle", { interlaced: true }],
+            ["jpegtran", { progressive: true }],
+            ["optipng", { optimizationLevel: 5 }]
+          ],
         },
+      },
     }),
   ],
 
@@ -100,11 +100,30 @@ module.exports = {
         test: /\.(jpe?g|png|gif|svg|woff2?|fnt|webp)$/, // checking for these file types
         loader: 'file-loader',
         options: {
-            name(file) {
+          name(file) {
             return '[hash].[text]'
           }
         }
-      }
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        type: "asset",
+      },
+      // We recommend using only for the "production" mode
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [
+          {
+            loader: ImageMinimizerPlugin.loader,
+            options: {
+              severityError: 'warning',
+              minimizerOptions: {
+                plugins: ['gifsicle']
+              }
+            },
+          },
+        ],
+      },
     ]
   }
 }
