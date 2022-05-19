@@ -1,0 +1,14 @@
+{
+  "root": true,
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  },
+  "globals": {
+    "IS_DEVELOPMENT": "readonly"
+  }
+  // "parseOptions": {
+  //   "ecmaVersion": 2020
+  // }
+}

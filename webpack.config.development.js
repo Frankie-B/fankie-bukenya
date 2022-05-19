@@ -1,22 +1,18 @@
-const {merge} = require('webpack-merge');
+const { merge } = require("webpack-merge");
 
-const path = require('path');
-const config = require('./webpack.config');
+const path = require("path");
+const config = require("./webpack.config");
 
 module.exports = merge(config, {
+	mode: "development",
 
-		mode: "development",
+	devtool: "inline-source-map",
 
-		devtool: "inline-source-map",
+	devServer: {
+		devMiddleware: {
+			writeToDisk: true,
+		},
+	},
 
-
-    devServer: {
-
-      devMiddleware: {
-        writeToDisk: true,
-      }
-
-    },
-
-		output: { path: path.resolve(__dirname, "public") },
-	})
+	output: { path: path.resolve(__dirname, "public") },
+});
