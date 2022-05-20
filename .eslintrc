@@ -7,8 +7,5 @@
   },
   "globals": {
     "IS_DEVELOPMENT": "readonly"
-  },
-  "parseOptions": {
-    "ecmaVersion": 2020
   }
 }
